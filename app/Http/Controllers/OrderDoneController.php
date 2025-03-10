@@ -39,12 +39,12 @@ class OrderDoneController extends Controller
         } else {
         }
 
-        $numberDoneToday = DB::select('SELECT COUNT(*) as count FROM `order` WHERE DATE(created_at) = CURDATE()');
-        $numberDoneYesterday = DB::select('SELECT o.created_at, d.food_id, d.food_qty, m.f_price, (d.food_qty * m.f_price) AS cust_total
-                                            FROM detail_order d
-                                            JOIN menu m ON d.food_id = m.id
-                                            JOIN `order` o ON d.order_id = o.id
-                                            WHERE DATE(o.created_at) = DATE_SUB(CURDATE(), INTERVAL 1 DAY);
+        $numberDoneToday = DB::select('SELECT SUM(food_qty) AS sum
+                                        FROM detail_order
+                                        WHERE DATE(created_at) = CURDATE()');
+        $numberDoneYesterday = DB::select('SELECT SUM(food_qty) AS sum
+                                            FROM detail_order
+                                            WHERE DATE(created_at) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)
                                             ');
         $moneyGainedToday = DB::select('SELECT o.created_at, d.food_id, d.food_qty, m.f_price, (d.food_qty * m.f_price) AS cust_total
                                                 FROM detail_order d
@@ -68,8 +68,8 @@ class OrderDoneController extends Controller
             $averageToday = (($numberDoneToday - $averageOrder) / $averageOrder) * 100;
             $averageYesterday = (($numberDoneYesterday - $averageOrder) / $averageOrder) * 100;
         } else {
-            $averageToday = (($numberDoneToday[0]->count - $averageOrder) / $averageOrder) * 100;
-            $averageYesterday = (($numberDoneYesterday[0]->count - $averageOrder) / $averageOrder) * 100;
+            $averageToday = (($numberDoneToday[0]->sum - $averageOrder) / $averageOrder) * 100;
+            $averageYesterday = (($numberDoneYesterday[0]->sum - $averageOrder) / $averageOrder) * 100;
         }
 
         // return data
@@ -85,8 +85,8 @@ class OrderDoneController extends Controller
             ]);
         } else {
             return view("dashboard", [
-                'numberDoneToday' => $numberDoneToday[0]->count,
-                'numberDoneYesterday' => $numberDoneYesterday[0]->count,
+                'numberDoneToday' => $numberDoneToday[0]->sum,
+                'numberDoneYesterday' => $numberDoneYesterday[0]->sum,
                 'averageToday' => $averageToday,
                 'averageYesterday' => $averageYesterday,
                 'moneyTotalToday' => $rupiah

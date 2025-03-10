@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends('layouts.app')
 
 <style>
     a {
@@ -51,7 +51,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        @extends('layouts.app')
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -59,20 +59,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdToday as $index => $data)
+                @foreach ($custIdToday as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNameToday[$index] }}</td>
                     <td>{{ $custFoodToday[$index] }}</td>
                     <td>{{ $custQtyToday[$index] }}</td>
-                    <td>{{ $custTableToday[$index] }}</td>
                     <td>{{ $custCreatedAtToday[$index] }}</td>
                     <td>{{ $custTotalRupiahToday[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdToday[$index] }}">
@@ -103,7 +101,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        undefined
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -111,20 +109,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdConfirmed as $index => $data)
+                @foreach ($custIdConfirmed as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNameConfirmed[$index] }}</td>
                     <td>{{ $custFoodConfirmed[$index] }}</td>
                     <td>{{ $custQtyConfirmed[$index] }}</td>
-                    <td>{{ $custTableConfirmed[$index] }}</td>
                     <td>{{ $custCreatedAtConfirmed[$index] }}</td>
                     <td>{{ $custTotalRupiahConfirmed[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdConfirmed[$index] }}">
@@ -155,7 +151,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        undefined
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -163,20 +159,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdPreparing as $index => $data)
+                @foreach ($custIdPreparing as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNamePreparing[$index] }}</td>
                     <td>{{ $custFoodPreparing[$index] }}</td>
                     <td>{{ $custQtyPreparing[$index] }}</td>
-                    <td>{{ $custTablePreparing[$index] }}</td>
                     <td>{{ $custCreatedAtPreparing[$index] }}</td>
                     <td>{{ $custTotalRupiahPreparing[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdPreparing[$index] }}">
@@ -207,7 +201,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        undefined
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -215,20 +209,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdCompleted as $index => $data)
+                @foreach ($custIdCompleted as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNameCompleted[$index] }}</td>
                     <td>{{ $custFoodCompleted[$index] }}</td>
                     <td>{{ $custQtyCompleted[$index] }}</td>
-                    <td>{{ $custTableCompleted[$index] }}</td>
                     <td>{{ $custCreatedAtCompleted[$index] }}</td>
                     <td>{{ $custTotalRupiahCompleted[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdCompleted[$index] }}">
@@ -259,7 +251,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        undefined
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -267,20 +259,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdCancelled as $index => $data)
+                @foreach ($custIdCancelled as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNameCancelled[$index] }}</td>
                     <td>{{ $custFoodCancelled[$index] }}</td>
                     <td>{{ $custQtyCancelled[$index] }}</td>
-                    <td>{{ $custTableCancelled[$index] }}</td>
                     <td>{{ $custCreatedAtCancelled[$index] }}</td>
                     <td>{{ $custTotalRupiahCancelled[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdCancelled[$index] }}">
@@ -311,7 +301,7 @@
         // Your Blade template code
         var tbodyContent = `<form method="post" action="{{ route('dashboard.list.update') }}">
         @csrf
-        @method('post')
+        undefined
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -319,20 +309,18 @@
                     <th>Name</th>
                     <th>Detail Order</th>
                     <th>Quantity</th>
-                    <th>Table</th>
                     <th>Time</th>
                     <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
             <tbody id="data1" class="mt-3">
-                @foreach($custIdPending as $index => $data)
+                @foreach ($custIdPending as $index => $data)
                 <tr>
                     <td>{{ $data }}</td>
                     <td>{{ $custNamePending[$index] }}</td>
                     <td>{{ $custFoodPending[$index] }}</td>
                     <td>{{ $custQtyPending[$index] }}</td>
-                    <td>{{ $custTablePending[$index] }}</td>
                     <td>{{ $custCreatedAtPending[$index] }}</td>
                     <td>{{ $custTotalRupiahPending[$index] }}</td>
                     <input type="hidden" name="index[]" value="{{ $custIdPending[$index] }}">
