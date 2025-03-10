@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Menu;
 use App\Models\OrderStatus;
 use App\Models\Customer;
+use App\Models\DetailOrder;
 
 class RestaurantMenuController extends Controller
 {
@@ -25,10 +26,9 @@ class RestaurantMenuController extends Controller
         }
 
         $datas = [[]];
-        $datas[0][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = "Sandwich"');
-        $datas[1][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = "Cake"');
-        $datas[2][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = "Coffee"');
-        $datas[3][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = "Non Coffee"');
+        $datas[0][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = 1');
+        $datas[1][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = 2');
+        $datas[2][] = DB::select('SELECT id,f_name, f_description, f_price, f_photo FROM `menu` WHERE f_category = 3');
         // Initialize arrays
         $ids = [];
         $fName = [];
@@ -81,39 +81,23 @@ class RestaurantMenuController extends Controller
         $menu = Menu::where('id', $ids)->firstOrFail();
 
         $order = new Order();
-        $order->food_id = $ids;
         $order->status_id = 1;
-        $status = OrderStatus::where("id", $order->status_id)->firstOrFail();
-        $order->cust_quantity = $finalQty;
-        $order->customer_id = NULL;
-        $order->cust_name = NULL;
-        $order->customer_table = NULL;
-        $order->cust_food_name = $menu->f_name;
-        $order->cust_price = $menu->f_price;
-        $order->cust_total = $menu->f_price * $finalQty;
-        $order->cust_status = $status->order_status;
         $order->created_at = now();
-        $order->deleted_at = NULL;
-        $order->updated_at = NULL;
-        $order->save();
+        $order->updated_at = now();
+        $order->save(); // Save the order first to get the ID
+
+        $detail_order = new DetailOrder();
+        $detail_order->order_id = $order->id; // Now order_id is valid
+        $detail_order->food_id = $ids;
+        $detail_order->food_qty = $finalQty;
+        $detail_order->created_at = now();
+        $detail_order->updated_at = now();
+        $detail_order->save(); // Save after order is created
+
 
         $maxId = DB::table('order')->max('id');
-        $newAutoIncrement = $maxId + 1;
-        DB::statement('ALTER TABLE `order` AUTO_INCREMENT = ' . $newAutoIncrement);
 
-        // Re-arrange IDs starting from 1
-        $idsToReArrange = Order::all()->pluck('id')->all();
-        sort($idsToReArrange);
-
-        $newId = 1;
-        foreach ($idsToReArrange as $id) {
-            if ($id != $newId) {
-                DB::table('order')->where('id', $id)->update(['id' => $newId]);
-            }
-            $newId++;
-        }
-
-        return redirect()->route('restaurant.cust', ['orderId' => $newId - 1]);
+        return redirect()->route('restaurant.cust', ['orderId' => $maxId]);
     }
 
     public function passCust($orderId)
@@ -125,7 +109,6 @@ class RestaurantMenuController extends Controller
 
     public function postCust($orderId, Request $request)
     {
-        $orderIds = $orderId;
         $custName = $request->input('cust_name');
         $custPhone = $request->input('cust_phone_number');
         $customer = new Customer();
@@ -134,11 +117,8 @@ class RestaurantMenuController extends Controller
         $customer->created_at = now();
         $customer->save();
 
-        $order = Order::where('id', $orderIds)->firstOrFail();
-        $customerId = $customer->id;
-        $order->customer_id = $customerId;
-        $order->cust_name = $custName;
-        $order->customer_table = NULL;
+        $order = Order::where('id', $orderId)->firstOrFail();
+        $order->customer_id = $customer->id;
         $order->save();
     }
 }

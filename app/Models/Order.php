@@ -20,16 +20,9 @@ class Order extends Model
     ];
 
     protected $fillable = [
-        "food_id",
+        "id",
         "customer_id",
         "status_id",
-        "customer_name",
-        "customer_table",
-        "cust_food_name",
-        "cust_price",
-        "cust_quantity",
-        "cust_total",
-        "cust_status",
         "updated_at",
         "created_at",
         "deleted_at"

@@ -13,15 +13,17 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $category = [[
-            "categories" => "Sandwich",
-        ], [
-            "categories" => "Cake",
-        ], [
-            "categories" => "Coffee",
-        ], [
-            "categories" => "Non Coffee",
-        ]];
+        $category = [
+            [
+                "categories" => "Food",
+            ],
+            [
+                "categories" => "Coffee",
+            ],
+            [
+                "categories" => "Non Coffee",
+            ]
+        ];
 
         Category::insert($category);
     }

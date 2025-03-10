@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table("menu", function (Blueprint $table) {
-            // from menu to customer
-            $table->foreign("category_id", "fk_menu_to_customer")->references("id")->on("category")->onDelete("set null");
+            // from menu to category
+            $table->foreign("f_category", "fk_menu_to_category")->references("id")->on("category")->onDelete("set null");
         });
     }
 
@@ -23,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table("menu", function (Blueprint $table) {
-            $table->dropForeign("fk_menu_to_customer");
+            $table->dropForeign("fk_menu_to_category");
         });
     }
 };

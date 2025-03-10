@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("category_id")->nullable()->index("fk_menu_to_customer");
             $table->string("f_name")->nullable();
             $table->longText("f_description")->nullable();
             $table->double("f_price")->nullable();
             $table->double("f_rating")->nullable();
             $table->longText("f_photo")->nullable();
-            $table->string("f_category")->nullable();
+            $table->foreignId("f_category")->nullable()->index("fk_menu_to_category");
             $table->softDeletes();
             $table->timestamps();
         });

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customer_data', function (Blueprint $table) {
+        Schema::create('detail_order', function (Blueprint $table) {
             $table->id();
-            // $table->integer("customer_id");
-            $table->foreignId("customer_id")->index("fk_customer_to_customer_data");
-            $table->string("customer_name");
-            $table->string("customer_phone");
-            $table->softDeletes();
+            $table->foreignId("order_id")->nullable()->index("fk_detail_order_to_order");
+            $table->foreignId("food_id")->nullable()->index("fk_detail_order_to_menu");
+            $table->integer("food_qty")->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customer_data');
+        Schema::dropIfExists('detail_order');
     }
 };
