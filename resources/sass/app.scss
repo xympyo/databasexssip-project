@@ -1,0 +1,119 @@
+// Fonts
+@import url("https://fonts.bunny.net/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// GLOBAL DASHBOARD
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin-top: 1rem;
+    background-color: #222831;
+    color: #dbd3cd;
+}
+
+// DASHBOARD
+.primary {
+    color: #dbd3cd;
+}
+.active {
+    background-color: #2d3d3f;
+    padding: 0rem 2rem 0rem 1rem;
+    border-radius: 1.75rem;
+    color: #dbd3cd;
+}
+.navigationbar {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #dbd3cd;
+    &:hover {
+        color: inherit;
+    }
+}
+.navigation-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.cap-container {
+    background-color: #283739;
+    padding: 0.75rem;
+    border-radius: 1.75rem;
+}
+.good {
+    border: 1px solid #b2f35f;
+    color: #b2f35f;
+}
+.good-text {
+    color: #b2f35f;
+}
+.bad {
+    border: 1px solid #cc3335;
+    color: #cc3335;
+}
+.bad-text {
+    color: #cc3335;
+}
+.outline {
+    border: 1px solid #95a1f9;
+    background-color: #283739;
+    border-radius: 1.75rem;
+}
+li,
+a {
+    color: inherit;
+    list-style: none;
+    text-decoration: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+// list page style
+.list-nav {
+    background-color: #202c2d;
+    padding: 1rem;
+    padding: 0.5rem;
+}
+.active-list {
+    border-bottom: 1px solid #b2f35f;
+}
+.inactive-list {
+    border: none;
+}
+th {
+    text-align: center;
+}
+tr th:first-child {
+    text-align: left;
+}
+tr th:last-child {
+    text-align: right;
+}
+td {
+    text-align: center;
+}
+tr td:first-child {
+    text-align: left;
+}
+tr td:last-child {
+    text-align: right;
+}
+
+// menu
+.add-btn {
+    background-color: #202c2d;
+    color: #b2f35f;
+    border: 0px;
+    border-radius: 25px;
+    padding: 0.175rem 1rem 0.175rem 1rem;
+}

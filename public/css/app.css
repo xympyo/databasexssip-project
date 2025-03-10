@@ -1,0 +1,433 @@
+body {
+    background: white;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: -5px 5px 10px -10px #2d3748;
+    background: #dbd3cd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 90px;
+    height: 70px; /* Mengurangi tinggi logo menjadi 70px */
+    margin-right: 5px;
+}
+
+.orange-text {
+    color: #db7352;
+    text-shadow: 4px 4px 10px rgb(240, 180, 133);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    height: 70px; /* Mengurangi tinggi menu menjadi 70px */
+}
+
+.menu li {
+    margin: 0 10px; /* Menambahkan margin untuk memberi jarak antara tautan */
+    display: flex; /* Mengubah display menjadi flex */
+    align-items: center; /* Memusatkan vertikal isi dari <li> */
+}
+
+.right li {
+    margin-right: 20px;
+}
+
+header a {
+    padding: 10px 20px;
+    font-weight: 600;
+    text-align: center; /* Menjadikan teks berada di tengah */
+}
+
+.order-button {
+    background-color: #db7352;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #c65b3a;
+}
+
+.content-home {
+    max-width: 1440px;
+    text-align: center;
+}
+
+.Home-1 {
+    padding: 20px 0;
+    display: flex;
+}
+
+.Home-1 .list {
+    width: 50%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.desc {
+    padding: 20px;
+    text-align: left;
+    margin-top: -20px;
+    margin-left: 30px;
+}
+
+.desc h1 {
+    font-size: 60px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 20px;
+}
+
+.desc p {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.pic1 {
+    padding: 20px;
+    margin-top: -20px;
+}
+
+.pic1 img {
+    max-width: calc(100% - 40px);
+    height: auto;
+}
+
+.Home-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #dbd3cd;
+    padding-bottom: 40px; /* Menambahkan jarak di bagian bawah */
+}
+
+.desc2 {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 10px; /* Mengurangi margin bottom */
+    margin-top: 30px; /* Menambahkan margin top */
+}
+
+.desc2 h1 {
+    font-family: "David Libre", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.desc2 p {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+}
+
+.pic2 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: -15px;
+    padding: 0 30px;
+}
+
+.pic2 img {
+    border-radius: 30px;
+    width: calc(18% - 10px);
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 0px;
+}
+
+.pic2 img:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.pic2 img:nth-child(1),
+.pic2 img:nth-child(2),
+.pic2 img:nth-child(3),
+.pic2 img:nth-child(4) {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pic3 {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.pic3 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.desc3-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desc3 h1 {
+    margin-bottom: 30px; /* Menambahkan jarak antara h1 dan p */
+    font-family: "David Libre", sans-serif; /* Menggunakan font David Libre */
+    font-size: 60px; /* Ukuran teks 60px */
+    font-weight: bold; /* Tebal (bold) */
+}
+
+.desc3 p {
+    margin-top: 20px; /* Menambahkan jarak antara p dan tombol */
+    margin-bottom: 20px; /* Menambahkan jarak antara p dan tombol */
+    font-family: "Poppins", sans-serif; /* Menggunakan font Poppins */
+    font-size: 20px; /* Ukuran teks 20px */
+    line-height: 1.6; /* Jarak antar baris 1.6 */
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.menu-button {
+    width: 150px; /* Menambahkan lebar tombol */
+    background-color: #db7352;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #c65b3a;
+}
+
+.Home-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0; /* Menambahkan padding atas dan bawah */
+}
+
+.desc4 {
+    text-align: center;
+    margin-bottom: 30px; /* Menambahkan jarak dari bawah */
+}
+
+.desc4 h1 {
+    margin-top: 20px; /* Menambahkan jarak dari atas */
+    margin-bottom: 30px; /* Menambahkan jarak antara h1 dan p */
+    font-family: "David Libre", sans-serif; /* Menggunakan font David Libre */
+    font-size: 60px; /* Ukuran teks 60px */
+    font-weight: bold; /* Tebal (bold) */
+}
+
+.desc4 p {
+    font-family: "Poppins", sans-serif; /* Menggunakan font Poppins */
+    font-size: 20px; /* Ukuran teks 20px */
+}
+
+.pic4 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px; /* Menambahkan jarak di bagian atas */
+    padding: 0 30px;
+}
+
+.pic4 img {
+    width: calc(25% - 15px); /* Lebar gambar */
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+    transition: transform 0.3s ease; /* Efek transisi */
+}
+
+.pic4 img:hover {
+    transform: scale(1.1); /* Efek zoom saat disentuh */
+    z-index: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    min-width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1170px;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+.footer {
+    padding: 70px 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Mengatur agar kolom footer menyebar secara merata */
+    flex-wrap: wrap; /* Agar konten footer bisa melintasi baris jika tidak cukup lebar */
+    background-color: #dbd3cd;
+}
+
+.footer-col {
+    padding: 0 15px;
+    text-align: left; /* Mengatur teks menjadi rata kiri */
+    width: 25%; /* Mengatur lebar setiap kolom agar sejajar */
+}
+
+.footer-col h4 {
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: bold;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-col ul li:not(:last child) {
+    margin-bottom: 10px;
+}
+
+footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+footer-col ul li a:hover {
+    color: aqua;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #2d3748;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    color: aqua;
+    background-color: gray;
+}
+
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 584px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+
+.footer-col p {
+    margin-bottom: 20px; /* Menambahkan jarak antara paragraf */
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-col ul li:first-child {
+    margin-bottom: 10px; /* Menambahkan jarak dari p atasnya */
+}
